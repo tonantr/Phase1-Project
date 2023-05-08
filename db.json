@@ -1,0 +1,50 @@
+{
+    "ramens": [
+      {
+        "id": 1,
+        "make": "Audi",
+        "model": "A6",
+        "image": "./images/audi.jpg",
+        "year": 2017,
+        "condition": "Used",
+        "price": "$20,000"
+      },
+      {
+        "id": 2,
+        "make": "Mercedes",
+        "model": "E",
+        "image": "./images/mercedes.jpg",
+        "year": 2023,
+        "condition": "New",
+        "price": "$50,000"
+      },
+      {
+        "id": 3,
+        "make": "Jeep",
+        "model": "Jeep Cherokee",
+        "image": "./images/jeep.jpg",
+        "year": 2016,
+        "condition": "Used",
+        "price": "$30,000"
+      },
+      {
+        "id": 4,
+        "make": "Hyundai",
+        "model": "Santa FE",
+        "image": "./images/hyundai.jpg",
+        "year": 2019,
+        "condition": "Used",
+        "price": "$40,000"
+      },
+      {
+        "id": 5,
+        "make": "Honda",
+        "model": "CRV",
+        "image": "./images/crv.jpg",
+        "year": 2021,
+        "condition": "Used",
+        "price": "$28,000"
+      }
+      
+    ]
+  }
