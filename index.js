@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
 function createMenu() {
     const list = ['Add', 'Update', 'Delete']
     for (let i = 0; i < list.length; i++) {
@@ -24,12 +23,16 @@ function createMenu() {
         li.textContent = list[i]
         nav.append(ul, li)
         li.addEventListener('click', function() {
+            const searchDiv = document.querySelector('.search')
             if (li.textContent === 'Add') {
                 h4.textContent = 'Adding'
+                searchDiv.setAttribute('hidden', 'hidden')
             } else if (li.textContent === 'Update') {
                 h4.textContent = 'Updating'
+                searchDiv.removeAttribute('hidden')
             } else if (li.textContent === 'Delete') {
                 h4.textContent = 'Deleting'
+                searchDiv.removeAttribute('hidden')
             }
         })
     }
@@ -47,6 +50,10 @@ function addNewCar(data) {
         })
     })
     .then(res => res.json())
+};
+
+function updateCar(id) {
+
 };
 
 function createTableHead(table, data) {
@@ -70,7 +77,6 @@ function createTable(table, data) {
         }
     });
 };
-
 
 function loadTable(data) {
     const table = document.querySelector("table");
