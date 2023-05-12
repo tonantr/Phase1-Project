@@ -1,50 +1,124 @@
 {
-    "cars": [
-      {
-        "id": 1,
-        "make": "Audi",
-        "model": "A6",
-        "image": "./images/audi.jpg",
-        "year": 2017,
-        "condition": "Used",
-        "price": "$20,000"
-      },
-      {
-        "id": 2,
-        "make": "Mercedes",
-        "model": "E",
-        "image": "./images/mercedes.jpg",
-        "year": 2023,
-        "condition": "New",
-        "price": "$50,000"
-      },
-      {
-        "id": 3,
-        "make": "Jeep",
-        "model": "Jeep Cherokee",
-        "image": "./images/jeep.jpg",
-        "year": 2016,
-        "condition": "Used",
-        "price": "$30,000"
-      },
-      {
-        "id": 4,
-        "make": "Hyundai",
-        "model": "Santa FE",
-        "image": "./images/hyundai.jpg",
-        "year": 2019,
-        "condition": "Used",
-        "price": "$40,000"
-      },
-      {
-        "id": 5,
-        "make": "Honda",
-        "model": "CRV",
-        "image": "./images/crv.jpg",
-        "year": 2021,
-        "condition": "Used",
-        "price": "$28,000"
-      }
-      
-    ]
-  }
+  "cars": [
+    {
+      "make": "Audi",
+      "model": "A6",
+      "year": 2017,
+      "condition": "Used",
+      "price": 20000,
+      "id": 1
+    },
+    {
+      "make": "Mercedes",
+      "model": "E",
+      "year": 2023,
+      "condition": "New",
+      "price": 50000,
+      "id": 2
+    },
+    {
+      "make": "Jeep",
+      "model": "Jeep Cherokee",
+      "year": 2016,
+      "condition": "Used",
+      "price": 30000,
+      "id": 3
+    },
+    {
+      "make": "Hyundai",
+      "model": "Santa FE",
+      "year": 2019,
+      "condition": "Used",
+      "price": 40000,
+      "id": 4
+    },
+    {
+      "make": "Honda",
+      "model": "CRV",
+      "year": 2021,
+      "condition": "Used",
+      "price": 28000,
+      "id": 5
+    },
+    {
+      "make": "Acura",
+      "model": "XLT",
+      "year": 2023,
+      "condition": "Used",
+      "price": 58000,
+      "id": 6
+    },
+    {
+      "make": "Mazda",
+      "model": "CX5",
+      "year": 2021,
+      "condition": "New",
+      "price": 38000,
+      "id": 7
+    },
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2023,
+      "condition": "New",
+      "price": 45000,
+      "id": 8
+    },
+    {
+      "make": "Nissan",
+      "model": "Rogue",
+      "year": 2023,
+      "condition": "New",
+      "price": 28000,
+      "id": 9
+    },
+    {
+      "make": "Lexus",
+      "model": "LX",
+      "year": 2023,
+      "condition": "New",
+      "price": 78000,
+      "id": 10
+    },
+    {
+      "make": "Toyota",
+      "model": "RAV4",
+      "year": "2323",
+      "condition": "New",
+      "price": "34999",
+      "id": 11
+    },
+    {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": "2334",
+      "condition": "Used",
+      "price": "46000",
+      "id": 12
+    },
+    {
+      "make": "Infiniti",
+      "model": "f",
+      "year": "3344",
+      "condition": "New",
+      "price": "56000",
+      "id": 13
+    },
+    {
+      "make": "ford",
+      "model": "f150",
+      "year": "5544",
+      "condition": "Used",
+      "price": "67000",
+      "id": 14
+    },
+    {
+      "make": "vinfast",
+      "model": "f12",
+      "year": "2021",
+      "condition": "New",
+      "price": "56000",
+      "id": 15
+    }
+  ]
+}
