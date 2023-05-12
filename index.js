@@ -6,11 +6,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#carForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        const formData = Object.fromEntries(new FormData(form))
-        addNewCar(formData)
+        const formData = new FormData(form)
+        if(emptyValidation(formData)) {
+            const data = Object.fromEntries(formData)
+            addNewCar(data)
+        }
     })
 
 });
+
+function emptyValidation(form) {
+    const make = form.get('make')
+    const model = form.get('model')
+    const year = form.get('year')
+    const condition = form.get('condition')
+    const price = form.get('price')
+    if(make === '' || make === null) {
+        alert('please input a value')
+    }else if(model === '' || model === null) {
+        alert('please input a value')
+    }else if(year === '' || year === null || year === 0) {
+        alert('please input a value')
+    }else if(condition === '' || condition === null) {
+        alert('please input a value')
+    }else if(price === '' || price === null || price === 0) {
+        alert('please input a value')
+    }else {
+        return true
+    }
+};
 
 function createMenu() {
     const list = ['Add', 'Update', 'Delete']
@@ -19,19 +43,19 @@ function createMenu() {
         const ul = document.createElement('ul')
         const li = document.createElement('li')
         const h4 = document.querySelector('h4')
-        h4.textContent = 'Adding'
+        h4.textContent = 'Adding A Car'
         li.textContent = list[i]
         nav.append(ul, li)
         li.addEventListener('click', function() {
             const searchDiv = document.querySelector('.search')
             if (li.textContent === 'Add') {
-                h4.textContent = 'Adding'
+                h4.textContent = 'Adding A Car'
                 searchDiv.setAttribute('hidden', 'hidden')
             } else if (li.textContent === 'Update') {
-                h4.textContent = 'Updating'
+                h4.textContent = 'Updating A Car'
                 searchDiv.removeAttribute('hidden')
             } else if (li.textContent === 'Delete') {
-                h4.textContent = 'Deleting'
+                h4.textContent = 'Deleting A Car'
                 searchDiv.removeAttribute('hidden')
             }
         })
