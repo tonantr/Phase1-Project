@@ -1,15 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/cars')
-    .then(res => res.json())
-    .then(data => loadTable(data))
-    .then(createMenu())
+        .then(res => res.json())
+        .then(data => loadTable(data))
+        .then(createMenu())
+
+    const h4 = document.querySelector('h4')
     const form = document.querySelector('#carForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        const formData = new FormData(form)
-        if(emptyValidation(formData)) {
-            const data = Object.fromEntries(formData)
-            addNewCar(data)
+        if (h4.textContent === 'Adding') {
+            const formData = new FormData(form)
+            if (emptyValidation(formData)) {
+                const data = Object.fromEntries(formData)
+                addNewCar(data)
+            }
+        } else if(h4.textContent === 'Updating') {
+            const id = document.querySelector('#ID').value
+            const data = Object.fromEntries(new FormData(form))
+            updateCar(id, data)
+        }
+        // const formData = new FormData(form)
+        // if(emptyValidation(formData)) {
+        //     const data = Object.fromEntries(formData)
+        //     addNewCar(data)
+        // }
+    })
+
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', () => {
+        const id = document.querySelector('#ID').value
+        if (id === '' || id === null || id <= 0) {
+            alert('please input an id')
+        } else {
+            loadCarDetail(id)
         }
     })
 
@@ -21,17 +44,17 @@ function emptyValidation(form) {
     const year = form.get('year')
     const condition = form.get('condition')
     const price = form.get('price')
-    if(make === '' || make === null) {
+    if (make === '' || make === null) {
         alert('please input a value')
-    }else if(model === '' || model === null) {
+    } else if (model === '' || model === null) {
         alert('please input a value')
-    }else if(year === '' || year === null || year === 0) {
+    } else if (year === '' || year === null || year >= 2000) {
         alert('please input a value')
-    }else if(condition === '' || condition === null) {
+    } else if (condition === '' || condition === null) {
         alert('please input a value')
-    }else if(price === '' || price === null || price === 0) {
+    } else if (price === '' || price === null || price >= 0) {
         alert('please input a value')
-    }else {
+    } else {
         return true
     }
 };
@@ -43,19 +66,19 @@ function createMenu() {
         const ul = document.createElement('ul')
         const li = document.createElement('li')
         const h4 = document.querySelector('h4')
-        h4.textContent = 'Adding A Car'
+        h4.textContent = 'Adding'
         li.textContent = list[i]
         nav.append(ul, li)
-        li.addEventListener('click', function() {
+        li.addEventListener('click', function () {
             const searchDiv = document.querySelector('.search')
             if (li.textContent === 'Add') {
-                h4.textContent = 'Adding A Car'
+                h4.textContent = 'Adding'
                 searchDiv.setAttribute('hidden', 'hidden')
             } else if (li.textContent === 'Update') {
-                h4.textContent = 'Updating A Car'
+                h4.textContent = 'Updating'
                 searchDiv.removeAttribute('hidden')
             } else if (li.textContent === 'Delete') {
-                h4.textContent = 'Deleting A Car'
+                h4.textContent = 'Deleting'
                 searchDiv.removeAttribute('hidden')
             }
         })
@@ -70,25 +93,59 @@ function addNewCar(data) {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            ... data
+            ...data
         })
     })
-    .then(res => res.json())
+        .then(res => res.json())
 };
 
-function updateCar(id) {
+function loadCarDetail(id) {
+    fetch(`http://localhost:3000/cars/${id}`)
+        .then(res => res.json())
+        .then(data => refillForm(data))
+};
 
+function refillForm(data) {
+    const make = document.querySelector('#make')
+    make.setAttribute('value', data['make'])
+    const model = document.querySelector('#model')
+    model.setAttribute('value', data['model'])
+    const year = document.querySelector('#year')
+    year.setAttribute('value', data['year'])
+    const condition = document.querySelector('#condition')
+    condition.setAttribute('value', data['condition'])
+    const price = document.querySelector('#price')
+    price.setAttribute('value', data['price'])
+};
+
+function updateCar(id, data) {
+    fetch(`http://localhost:3000/cars/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            make: data['make'].value,
+            model: data['model'].value,
+            year: data['year'].value,
+            condition: data['condition'].value,
+            price: data['price'].value
+        })
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
 };
 
 function createTableHead(table, data) {
     const thead = table.createTHead()
     const row = thead.insertRow()
-   for (const value of data) {
+    for (const value of data) {
         const th = document.createElement('th')
         const text = document.createTextNode(value)
         th.appendChild(text)
         row.appendChild(th)
-   }
+    }
 };
 
 function createTable(table, data) {
