@@ -18,12 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = document.querySelector('#ID').value
             const data = Object.fromEntries(new FormData(form))
             updateCar(id, data)
+        } else if(h4.textContent === 'Deleting') {
+            const id = document.querySelector('#ID').value
+            delCar(id)
         }
-        // const formData = new FormData(form)
-        // if(emptyValidation(formData)) {
-        //     const data = Object.fromEntries(formData)
-        //     addNewCar(data)
-        // }
+        
     })
 
     const btn = document.querySelector('button')
@@ -38,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
+function disableInput(form) {
+    
+}
 
 function emptyValidation(form) {
     const make = form.get('make')
@@ -63,6 +64,7 @@ function emptyValidation(form) {
 
 function createMenu() {
     const list = ['Add', 'Update', 'Delete']
+    const form = document.querySelector('#carForm')
     for (let i = 0; i < list.length; i++) {
         const nav = document.querySelector('#topNav')
         const ul = document.createElement('ul')
@@ -82,6 +84,8 @@ function createMenu() {
             } else if (li.textContent === 'Delete') {
                 h4.textContent = 'Deleting'
                 searchDiv.removeAttribute('hidden')
+                const formData = new FormData(form)
+                disableInput(formData)
             }
         })
     }
@@ -137,6 +141,10 @@ function updateCar(id, data) {
     })
         .then(res => res.json())
         .then(data => console.log(data))
+};
+
+function delCar(id) {
+    
 };
 
 function createTableHead(table, data) {
