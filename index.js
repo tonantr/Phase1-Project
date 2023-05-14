@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+
 function emptyValidation(form) {
     const make = form.get('make')
     const model = form.get('model')
@@ -126,11 +128,11 @@ function updateCar(id, data) {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            make: data['make'].value,
-            model: data['model'].value,
-            year: data['year'].value,
-            condition: data['condition'].value,
-            price: data['price'].value
+            make: data['make'],
+            model: data['model'],
+            year: data['year'],
+            condition: data['condition'],
+            price: data['price']
         })
     })
         .then(res => res.json())
