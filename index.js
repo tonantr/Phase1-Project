@@ -8,16 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#carForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
+        const id = document.querySelector('#ID').value
         if (h4.textContent === 'Adding') {
             const formData = new FormData(form)
             if (emptyValidation(formData)) {
                 const data = Object.fromEntries(formData)
                 addNewCar(data)
+                
             }
         } else if(h4.textContent === 'Updating') {
-            const id = document.querySelector('#ID').value
             const data = Object.fromEntries(new FormData(form))
             updateCar(id, data)
+           
         } else if(h4.textContent === 'Deleting') {
             const id = document.querySelector('#ID').value
             delCar(id)
@@ -37,9 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function disableInput(form) {
-    
-}
+function disableInputs() {
+    const inputs = document.querySelectorAll('#make, #model, #year, #condition, #price')
+    inputs.forEach(element => {
+        element.disabled = true
+    });
+};
+
+function resetForm() {
+    const inputs = document.querySelectorAll('#make, #model, #year, #condition, #price')
+    inputs.forEach(element => {
+        if (element.value != null || element.value != '') {
+            element.value = ''
+        }
+    })
+};
 
 function emptyValidation(form) {
     const make = form.get('make')
@@ -65,6 +79,7 @@ function emptyValidation(form) {
 function createMenu() {
     const list = ['Add', 'Update', 'Delete']
     const form = document.querySelector('#carForm')
+    const id = document.querySelector('#ID').value
     for (let i = 0; i < list.length; i++) {
         const nav = document.querySelector('#topNav')
         const ul = document.createElement('ul')
@@ -78,14 +93,16 @@ function createMenu() {
             if (li.textContent === 'Add') {
                 h4.textContent = 'Adding'
                 searchDiv.setAttribute('hidden', 'hidden')
+                
             } else if (li.textContent === 'Update') {
                 h4.textContent = 'Updating'
                 searchDiv.removeAttribute('hidden')
+                
             } else if (li.textContent === 'Delete') {
                 h4.textContent = 'Deleting'
                 searchDiv.removeAttribute('hidden')
-                const formData = new FormData(form)
-                disableInput(formData)
+                disableInputs()
+                
             }
         })
     }
