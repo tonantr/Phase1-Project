@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/cars')
         .then(res => res.json())
         .then(data => loadTable(data))
-        .then(createMenu())
+        .then(loadNavMenu())
 
     const h4 = document.querySelector('h4')
     const form = document.querySelector('#carForm')
@@ -83,37 +83,34 @@ function emptyValidation(form) {
     }
 };
 
-function createMenu() {
-    const list = ['Add', 'Update', 'Delete']
+function loadNavMenu() {
     const form = document.querySelector('#carForm')
     const id = document.querySelector('#ID').value
-    for (let i = 0; i < list.length; i++) {
-        const nav = document.querySelector('#topNav')
-        const ul = document.createElement('ul')
-        const li = document.createElement('li')
-        const h4 = document.querySelector('h4')
-        h4.textContent = 'Adding'
-        li.textContent = list[i]
-        nav.append(ul, li)
-        li.addEventListener('click', function () {
+    const li = document.querySelectorAll('.nav-item')
+    const h4 = document.querySelector('h4')
+    h4.textContent = 'Adding'
+    li.forEach(element => {
+        element.addEventListener('click', function () {
             const searchDiv = document.querySelector('.search')
-            if (li.textContent === 'Add') {
+            if (element.textContent === 'Add') {
                 h4.textContent = 'Adding'
                 searchDiv.setAttribute('hidden', 'hidden')
-                disableInputs(flag=true)
-
-            } else if (li.textContent === 'Update') {
+                disableInputs(flag = true)
+    
+            } else if (element.textContent === 'Update') {
                 h4.textContent = 'Updating'
                 searchDiv.removeAttribute('hidden')
-                disableInputs(flag=true)
-
-            } else if (li.textContent === 'Delete') {
+                disableInputs(flag = true)
+    
+            } else if (element.textContent === 'Delete') {
                 h4.textContent = 'Deleting'
                 searchDiv.removeAttribute('hidden')
-                disableInputs(flag=false)
+                disableInputs(flag = false)
             }
         })
-    }
+    })
+    
+
 };
 
 function addNewCar(data) {
