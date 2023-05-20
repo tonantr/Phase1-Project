@@ -14,17 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (emptyValidation(formData)) {
                 const data = Object.fromEntries(formData)
                 addNewCar(data)
-                
+
             }
-        } else if(h4.textContent === 'Updating') {
+        } else if (h4.textContent === 'Updating') {
             const data = Object.fromEntries(new FormData(form))
             updateCar(id, data)
-           
-        } else if(h4.textContent === 'Deleting') {
+
+        } else if (h4.textContent === 'Deleting') {
             const id = document.querySelector('#ID').value
             delCar(id)
         }
-        
+
     })
 
     const btn = document.querySelector('button')
@@ -39,11 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function disableInputs() {
+function disableInputs(flag) {
     const inputs = document.querySelectorAll('#make, #model, #year, #condition, #price')
-    inputs.forEach(element => {
-        element.disabled = true
-    });
+    if (flag === false) {
+        inputs.forEach(element => {
+            element.disabled = true
+        });
+    } else {
+        inputs.forEach(element => {
+            element.disabled = false
+        });
+    }
+    
 };
 
 function resetForm() {
@@ -93,16 +100,17 @@ function createMenu() {
             if (li.textContent === 'Add') {
                 h4.textContent = 'Adding'
                 searchDiv.setAttribute('hidden', 'hidden')
-                
+                disableInputs(flag=true)
+
             } else if (li.textContent === 'Update') {
                 h4.textContent = 'Updating'
                 searchDiv.removeAttribute('hidden')
-                
+                disableInputs(flag=true)
+
             } else if (li.textContent === 'Delete') {
                 h4.textContent = 'Deleting'
                 searchDiv.removeAttribute('hidden')
-                disableInputs()
-                
+                disableInputs(flag=false)
             }
         })
     }
@@ -161,7 +169,7 @@ function updateCar(id, data) {
 };
 
 function delCar(id) {
-    
+
 };
 
 function createTableHead(table, data) {
