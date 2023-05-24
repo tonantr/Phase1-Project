@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else if (h4.textContent === 'Deleting') {
             const id = document.querySelector('#ID').value
-            delCar(id)
+            deleteCar(id)
         }
 
     })
@@ -155,7 +155,7 @@ function updateCar(id, data) {
         .then(res => res.json())
 };
 
-function delCar(id) {
+function deleteCar(id) {
     fetch(`http://localhost:3000/cars/${id}`, {
         method: 'DELETE'
     })
