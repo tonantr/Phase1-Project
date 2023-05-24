@@ -1,27 +1,11 @@
 {
   "cars": [
     {
-      "make": "Mercedes2",
-      "model": "E",
-      "year": 2023,
-      "condition": "New",
-      "price": 50000,
-      "id": 2
-    },
-    {
-      "make": "Jeep",
-      "model": "Jeep Cherokee",
-      "year": 2016,
-      "condition": "Used",
-      "price": 30000,
-      "id": 3
-    },
-    {
       "make": "Hyundai2",
       "model": "Santa FE",
-      "year": 2019,
+      "year": "2021",
       "condition": "Used",
-      "price": 40000,
+      "price": "40000",
       "id": 4
     },
     {

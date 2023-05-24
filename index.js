@@ -2,36 +2,36 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/cars')
         .then(res => res.json())
         .then(data => loadTable(data))
-        .then(loadNavMenu())
 
-    const h4 = document.querySelector('h4')
+    const btn = document.querySelector('#submit')
     const form = document.querySelector('#carForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         const id = document.querySelector('#ID').value
-        if (h4.textContent === 'Adding') {
+        if (btn.value === 'Add') {
             const formData = new FormData(form)
             if (emptyValidation(formData)) {
                 const data = Object.fromEntries(formData)
                 addNewCar(data)
             }
-        } else if (h4.textContent === 'Updating') {
+        } else if (btn.value === 'Update') {
             const data = Object.fromEntries(new FormData(form))
             updateCar(id, data)
 
-        } else if (h4.textContent === 'Deleting') {
+        } else if (btn.value === 'Delete') {
             const id = document.querySelector('#ID').value
             deleteCar(id)
+            
         }
 
     })
     searchBtn()
+    loadNavMenu()
 });
 
 function searchBtn() {
-    const btn = document.querySelector('button')
-    btn.addEventListener('click', (e) => {
-        e.preventDefault()
+    const btn = document.querySelector('#search')
+    btn.addEventListener('click', () => {
         const id = document.querySelector('#ID').value
         if (id === '' || id === null || id <= 0) {
             alert('please input an id')
@@ -80,21 +80,21 @@ function loadNavMenu() {
     const form = document.querySelector('#carForm')
     const id = document.querySelector('#ID').value
     const li = document.querySelectorAll('.nav-item')
-    const h4 = document.querySelector('h4')
-    h4.textContent = 'Adding'
+    const btn = document.querySelector('#submit')
+    btn.value = 'Add'
     li.forEach(element => {
         element.addEventListener('click', function () {
             const searchDiv = document.querySelector('.search')
             if (element.textContent === 'Add') {
-                h4.textContent = 'Adding'
+                btn.value = 'Add'
                 searchDiv.setAttribute('hidden', 'hidden')
                 disableInputs(flag = true)
             } else if (element.textContent === 'Update') {
-                h4.textContent = 'Updating'
+                btn.value = 'Update'
                 searchDiv.removeAttribute('hidden')
                 disableInputs(flag = true)
             } else if (element.textContent === 'Delete') {
-                h4.textContent = 'Deleting'
+                btn.value = 'Delete'
                 searchDiv.removeAttribute('hidden')
                 disableInputs(flag = false)
             }
