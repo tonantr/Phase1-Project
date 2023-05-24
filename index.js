@@ -3,22 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => loadTable(data))
 
-    const btn = document.querySelector('#submit')
+    const subBtn = document.querySelector('#submit')
     const form = document.querySelector('#carForm')
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         const id = document.querySelector('#ID').value
-        if (btn.value === 'Add') {
+        if (subBtn.value === 'Add') {
             const formData = new FormData(form)
             if (emptyValidation(formData)) {
                 const data = Object.fromEntries(formData)
                 addNewCar(data)
             }
-        } else if (btn.value === 'Update') {
+        } else if (subBtn.value === 'Update') {
             const data = Object.fromEntries(new FormData(form))
             updateCar(id, data)
 
-        } else if (btn.value === 'Delete') {
+        } else if (subBtn.value === 'Delete') {
             const id = document.querySelector('#ID').value
             deleteCar(id)
             
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function searchBtn() {
-    const btn = document.querySelector('#search')
-    btn.addEventListener('click', () => {
+    const searchBtn = document.querySelector('#search')
+    searchBtn.addEventListener('click', () => {
         const id = document.querySelector('#ID').value
         if (id === '' || id === null || id <= 0) {
             alert('please input an id')
@@ -80,21 +80,21 @@ function loadNavMenu() {
     const form = document.querySelector('#carForm')
     const id = document.querySelector('#ID').value
     const li = document.querySelectorAll('.nav-item')
-    const btn = document.querySelector('#submit')
-    btn.value = 'Add'
+    const subBtn = document.querySelector('#submit')
+    subBtn.value = 'Add'
     li.forEach(element => {
         element.addEventListener('click', function () {
             const searchDiv = document.querySelector('.search')
             if (element.textContent === 'Add') {
-                btn.value = 'Add'
+                subBtn.value = 'Add'
                 searchDiv.setAttribute('hidden', 'hidden')
                 disableInputs(flag = true)
             } else if (element.textContent === 'Update') {
-                btn.value = 'Update'
+                subBtn.value = 'Update'
                 searchDiv.removeAttribute('hidden')
                 disableInputs(flag = true)
             } else if (element.textContent === 'Delete') {
-                btn.value = 'Delete'
+                subBtn.value = 'Delete'
                 searchDiv.removeAttribute('hidden')
                 disableInputs(flag = false)
             }
