@@ -121,7 +121,7 @@ function addNewCar(data) {
 function loadCarDetail(id) {
     fetch(`http://localhost:3000/cars/${id}`)
         .then(res => res.json())
-        .then(data => refillForm(data))
+        //.then(data => refillForm(data))
 };
 
 function refillForm(data) {
