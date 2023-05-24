@@ -11,9 +11,9 @@
     {
       "make": "Honda",
       "model": "CRV",
-      "year": 2021,
+      "year": "2020",
       "condition": "Used",
-      "price": 28000,
+      "price": "28000",
       "id": 5
     },
     {
@@ -55,6 +55,14 @@
       "condition": "New",
       "price": 78000,
       "id": 10
+    },
+    {
+      "make": "fff",
+      "model": "xxfff",
+      "year": "2021",
+      "condition": "Used",
+      "price": "120000",
+      "id": 11
     }
   ]
 }

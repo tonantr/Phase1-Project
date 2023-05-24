@@ -62,15 +62,15 @@ function emptyValidation(form) {
     const condition = form.get('condition')
     const price = form.get('price')
     if (make === '' || make === null) {
-        alert('please input a value')
+        alert('Make must be filled out')
     } else if (model === '' || model === null) {
-        alert('please input a value')
-    } else if (year === '' || year === null || year >= 2000) {
-        alert('please input a value')
+        alert('Model must be filled out')
+    } else if (year === '' || year === null || year <= 2000) {
+        alert('Year must be filled out')
     } else if (condition === '' || condition === null) {
-        alert('please input a value')
-    } else if (price === '' || price === null || price >= 0) {
-        alert('please input a value')
+        alert('Condition must be filled out')
+    } else if (price === '' || price === null || price <= 0) {
+        alert('Price must be filled out')
     } else {
         return true
     }
