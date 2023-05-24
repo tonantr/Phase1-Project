@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
     searchBtn()
-    //loadNavMenu()
+    loadNavMenu()
 });
 
 function searchBtn() {
