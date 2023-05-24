@@ -1,14 +1,6 @@
 {
   "cars": [
     {
-      "make": "Audi1",
-      "model": "A7",
-      "year": "2020",
-      "condition": "Used",
-      "price": "40000",
-      "id": 1
-    },
-    {
       "make": "Mercedes2",
       "model": "E",
       "year": 2023,

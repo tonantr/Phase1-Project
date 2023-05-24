@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (emptyValidation(formData)) {
                 const data = Object.fromEntries(formData)
                 addNewCar(data)
-
             }
         } else if (h4.textContent === 'Updating') {
             const data = Object.fromEntries(new FormData(form))
@@ -26,9 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     })
+    searchBtn()
+});
 
+function searchBtn() {
     const btn = document.querySelector('button')
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault()
         const id = document.querySelector('#ID').value
         if (id === '' || id === null || id <= 0) {
             alert('please input an id')
@@ -36,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadCarDetail(id)
         }
     })
-
-});
+};
 
 function disableInputs(flag) {
     const inputs = document.querySelectorAll('#make, #model, #year, #condition, #price')
@@ -50,16 +52,7 @@ function disableInputs(flag) {
             element.disabled = false
         });
     }
-    
-};
 
-function resetForm() {
-    const inputs = document.querySelectorAll('#make, #model, #year, #condition, #price')
-    inputs.forEach(element => {
-        if (element.value != null || element.value != '') {
-            element.value = ''
-        }
-    })
 };
 
 function emptyValidation(form) {
@@ -96,12 +89,10 @@ function loadNavMenu() {
                 h4.textContent = 'Adding'
                 searchDiv.setAttribute('hidden', 'hidden')
                 disableInputs(flag = true)
-    
             } else if (element.textContent === 'Update') {
                 h4.textContent = 'Updating'
                 searchDiv.removeAttribute('hidden')
                 disableInputs(flag = true)
-    
             } else if (element.textContent === 'Delete') {
                 h4.textContent = 'Deleting'
                 searchDiv.removeAttribute('hidden')
@@ -109,7 +100,7 @@ function loadNavMenu() {
             }
         })
     })
-    
+
 
 };
 
@@ -162,11 +153,13 @@ function updateCar(id, data) {
         })
     })
         .then(res => res.json())
-        .then(data => console.log(data))
 };
 
 function delCar(id) {
-
+    fetch(`http://localhost:3000/cars/${id}`, {
+        method: 'DELETE'
+    })
+        .then(res => res.json())
 };
 
 function createTableHead(table, data) {
