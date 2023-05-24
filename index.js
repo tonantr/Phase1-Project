@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/cars')
         .then(res => res.json())
-        .then(data => loadTable(data))
+        //.then(data => loadTable(data))
 
     const subBtn = document.querySelector('#submit')
     const form = document.querySelector('#carForm')
