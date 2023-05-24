@@ -84,7 +84,7 @@ function loadNavMenu() {
     subBtn.value = 'Add'
     li.forEach(element => {
         element.addEventListener('click', function () {
-            //const searchDiv = document.querySelector('.search')
+            const searchDiv = document.querySelector('.search')
             if (element.textContent === 'Add') {
                 subBtn.value = 'Add'
                 searchDiv.setAttribute('hidden', 'hidden')
