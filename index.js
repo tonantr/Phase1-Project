@@ -88,15 +88,15 @@ function loadNavMenu() {
             if (element.textContent === 'Add') {
                 subBtn.value = 'Add'
                 searchDiv.setAttribute('hidden', 'hidden')
-                //disableInputs(flag = true)
+                disableInputs(flag = true)
             } else if (element.textContent === 'Update') {
                 subBtn.value = 'Update'
                 searchDiv.removeAttribute('hidden')
-                //disableInputs(flag = true)
+                disableInputs(flag = true)
             } else if (element.textContent === 'Delete') {
                 subBtn.value = 'Delete'
                 searchDiv.removeAttribute('hidden')
-                //disableInputs(flag = false)
+                disableInputs(flag = false)
             }
         })
     })
