@@ -43,9 +43,9 @@
     {
       "make": "Nissan",
       "model": "Rogue",
-      "year": 2023,
+      "year": "2023",
       "condition": "New",
-      "price": 28000,
+      "price": "29000",
       "id": 9
     },
     {
@@ -57,12 +57,12 @@
       "id": 10
     },
     {
-      "make": "fff",
-      "model": "xxfff",
+      "make": "Mazda",
+      "model": "CX30",
       "year": "2021",
-      "condition": "Used",
-      "price": "120000",
-      "id": 11
+      "condition": "New",
+      "price": "33000",
+      "id": 12
     }
   ]
 }
